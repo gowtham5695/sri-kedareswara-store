@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: sri-kedareswara-backend
+    env: node
+    plan: free
+    buildCommand: npm install && npm install --prefix backend
+    startCommand: node backend/server.js
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false

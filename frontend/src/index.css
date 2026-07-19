@@ -1,0 +1,431 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-primary: 'Inter', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Color Palette - Premium light lavender violet theme */
+  --bg-primary: #F8F6FC; /* Ultra-light lavender white page background */
+  --bg-secondary: #FFFFFF; /* Pure white content panels/cards */
+  --bg-tertiary: #ECE9F5; /* Soft lavender gray for toggles/pickers */
+  --bg-glass: rgba(255, 255, 255, 0.8);
+  --bg-glass-hover: rgba(255, 255, 255, 0.9);
+  
+  --border-color: rgba(43, 27, 77, 0.08); /* Soft violet border */
+  --border-glow: rgba(0, 229, 199, 0.3); /* Neon aqua glow */
+  
+  --text-primary: #1A1225; /* Rich black-violet for headers/body text */
+  --text-secondary: #4E4268; /* Cobalt-gray for subtext */
+  --text-muted: #8E82A8; /* Muted lavender gray */
+  
+  --accent-primary: #1D4ED8; /* Royal Cobalt Blue (Main CTA) */
+  --accent-primary-hover: #1E40AF; /* Deep Royal Blue */
+  --accent-secondary: #00E5C7; /* Neon Aqua */
+  
+  --success: #10b981;
+  --success-bg: rgba(16, 185, 129, 0.08);
+  --warning: #F5A623; /* Golden Amber (Highlights, pricing, badges) */
+  --warning-bg: rgba(245, 166, 35, 0.08);
+  --danger: #f43f5e;
+  --danger-bg: rgba(244, 63, 94, 0.08);
+  
+  --shadow-sm: 0 2px 8px rgba(43, 27, 77, 0.03);
+  --shadow-md: 0 8px 24px rgba(43, 27, 77, 0.05);
+  --shadow-lg: 0 16px 40px rgba(43, 27, 77, 0.08);
+  
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px; /* 8-12px rounded corners */
+  --border-radius-lg: 16px;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Theme-specific custom colors */
+  --color-primary-bg: #2B1B4D; /* Deep cobalt violet for headers/hero */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary);
+  border-radius: var(--border-radius-sm);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
+
+/* Glass Panel Layout */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.glass-panel:hover {
+  border-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 10px 30px rgba(249, 115, 22, 0.1);
+}
+
+/* Buttons */
+.btn {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-primary-hover) 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(29, 78, 216, 0.25);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(29, 78, 216, 0.35);
+  opacity: 0.95;
+}
+
+.btn-secondary {
+  background: var(--bg-secondary);
+  color: #009E89; /* Darker aqua for contrast on light background */
+  border: 1px solid var(--accent-secondary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: rgba(0, 229, 199, 0.05);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 4px 12px rgba(0, 229, 199, 0.15);
+}
+
+.btn-danger {
+  background: var(--danger-bg);
+  color: #e11d48; /* High contrast rose red */
+  border: 1px solid rgba(244, 63, 94, 0.15);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: var(--danger);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.25);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Badge System */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.badge-success {
+  background-color: var(--success-bg);
+  color: #059669; /* High-contrast green */
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.badge-warning {
+  background-color: var(--warning-bg);
+  color: #D97706; /* High-contrast amber */
+  border: 1px solid rgba(245, 166, 35, 0.15);
+}
+
+.badge-danger {
+  background-color: var(--danger-bg);
+  color: #E11D48; /* High-contrast red */
+  border: 1px solid rgba(244, 63, 94, 0.15);
+}
+
+.badge-primary {
+  background-color: rgba(0, 229, 199, 0.08);
+  color: #009E89; /* High-contrast aqua text */
+  border: 1px solid rgba(0, 229, 199, 0.15);
+}
+
+/* Form Inputs */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-input, .form-select, .form-textarea {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+  background-color: var(--bg-secondary);
+}
+
+/* Grid & Layout System */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* App Loading / Notification States */
+.loading-spinner {
+  border: 3px solid rgba(255, 255, 255, 0.05);
+  border-top: 3px solid var(--accent-primary);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Utility Animations */
+.fade-in {
+  animation: fadeIn var(--transition-normal);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== MOBILE OPTIMIZATIONS ========== */
+
+/* Enhanced touch interactions */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .btn:hover:not(:active) {
+    transform: none;
+    box-shadow: 0 4px 14px rgba(249, 115, 22, 0.3);
+  }
+  
+  .btn-primary:active:not(:disabled) {
+    transform: translateY(-1px);
+    opacity: 0.9;
+  }
+  
+  /* Improve touch targets */
+  .btn, button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Disable tap highlight on mobile */
+  a, button {
+    -webkit-tap-highlight-color: rgba(249, 115, 22, 0.2);
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+  
+  /* Smooth scrolling on mobile */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better text rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
+  /* Prevent double-tap zoom */
+  button, a {
+    touch-action: manipulation;
+  }
+  
+  /* Improve mobile performance */
+  * {
+    -webkit-touch-callout: none;
+  }
+  
+  a {
+    -webkit-touch-callout: default;
+  }
+  
+  /* Better scrollbar on mobile */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  /* Prevent text selection on long press */
+  .btn, button, .icon-btn {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  
+  /* Better form input rendering */
+  .form-input, .form-select, .form-textarea {
+    font-size: 16px;
+    min-height: 44px;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  /* iOS specific fixes */
+  input[type="search"] {
+    -webkit-appearance: textfield;
+  }
+  
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button;
+  }
+  
+  /* Better modal appearance on mobile */
+  .modal-content, .drawer-content {
+    will-change: transform;
+  }
+  
+  /* Improve portrait/landscape transitions */
+  @media (orientation: portrait) {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  
+  @media (orientation: landscape) {
+    .header-brand h1 {
+      font-size: 0.95rem;
+    }
+    
+    .hero-content h2 {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* Ledger Matrix Styles */
+.ledger-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+.ledger-table th, .ledger-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 0.8rem;
+  text-align: center;
+  font-size: 0.85rem;
+  transition: all var(--transition-fast);
+}
+.ledger-table th {
+  background-color: var(--bg-tertiary);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.ledger-table td.row-header {
+  font-weight: 600;
+  text-align: left;
+  background-color: var(--bg-secondary);
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.02);
+}
+.ledger-cell-active {
+  background-color: rgba(16, 185, 129, 0.04);
+  cursor: pointer;
+}
+.ledger-cell-active:hover {
+  background-color: rgba(16, 185, 129, 0.08) !important;
+}
+.ledger-cell-empty {
+  background-color: var(--bg-secondary);
+  color: var(--text-muted);
+}
+.ledger-add-cell-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px dashed var(--border-color);
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.ledger-add-cell-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background-color: rgba(29, 78, 216, 0.05);
+}
+.ledger-crosshair-row {
+  background-color: rgba(29, 78, 216, 0.02) !important;
+}
+.ledger-crosshair-col {
+  background-color: rgba(29, 78, 216, 0.02) !important;
+}
+.ledger-crosshair-intersect {
+  background-color: rgba(29, 78, 216, 0.06) !important;
+  box-shadow: inset 0 0 0 1px var(--accent-primary) !important;
+}
+
