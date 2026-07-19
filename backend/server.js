@@ -287,9 +287,19 @@ app.get('/docs/:tag_link', async (req, res) => {
   res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
 });
 
+// Friendly message for the root API endpoint
+app.get('/', (req, res) => {
+  res.json({ message: "Sri Kedareswara Enterprises API is running successfully." });
+});
+
 // Fallback all other client-side routes to index.html
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  const indexPath = path.join(__dirname, '../frontend/dist/index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(404).json({ error: "Route not found" });
+  }
 });
 
 // Export the app for serverless deployment
