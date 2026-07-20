@@ -212,9 +212,10 @@
 }
 
 .official-brand-logo-img {
-  height: 100px !important; /* Prominent extra large logo for mobile & tablet */
-  max-height: 115px;
+  height: 150px !important; /* 150px Mobile Logo height requirement */
+  max-height: 160px;
   width: auto;
+  max-width: 100%;
   object-fit: contain;
 }
 
@@ -2740,8 +2741,8 @@
   }
 
   .official-brand-logo-img {
-    height: 125px !important; /* Extra large 125px logo image on desktop */
-    max-height: 135px;
+    height: 185px !important; /* 185px Desktop Logo height (175px-200px requirement) */
+    max-height: 200px;
   }
 
   .refined-hero-card {
