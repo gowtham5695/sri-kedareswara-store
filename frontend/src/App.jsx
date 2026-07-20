@@ -1743,7 +1743,10 @@ function App() {
                           ← {t("Back")}
                         </button>
                         <div>
-                          <h2>{t("Verify Order:")} {selectedOrder.enquiry_id}</h2>
+                          <h2 className="verify-order-heading">
+                            <span>{t("Verify Order:")}</span> 
+                            <span className="order-id-tag">{selectedOrder.enquiry_id}</span>
+                          </h2>
                           <p className="order-date">Received: {new Date(selectedOrder.created_at).toLocaleString()}</p>
                         </div>
                       </div>
@@ -1777,10 +1780,12 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Table of items with availability toggle & qty checks */}
+                    {/* Table / Cards of items with availability toggle & qty checks */}
                     <div className="order-items-verification">
                       <h3>{t("Verify Items Availability & Quantities")}</h3>
-                      <table className="verify-table">
+                      
+                      {/* Desktop Table View */}
+                      <table className="verify-table desktop-only-table">
                         <thead>
                           <tr>
                             <th>{t("Item Name & Size")}</th>
@@ -1831,6 +1836,58 @@ function App() {
                           })}
                         </tbody>
                       </table>
+
+                      {/* Mobile Cards View */}
+                      <div className="verify-items-mobile-list mobile-only-list">
+                        {selectedOrder.items.map((item, idx) => (
+                          <div 
+                            key={idx} 
+                            className={`verify-item-card glass-panel ${item.available_in_stock === false ? 'item-disabled' : ''}`}
+                          >
+                            <div className="verify-card-header">
+                              <div>
+                                <strong className="verify-item-name">{tName(item.item_name)}</strong>
+                                <span className="size-label">{t(item.size)}</span>
+                              </div>
+                              <label className="availability-toggle-label">
+                                <span>{t("In Stock?")}</span>
+                                <input 
+                                  type="checkbox" 
+                                  className="verify-checkbox"
+                                  checked={item.available_in_stock !== false}
+                                  disabled={selectedOrder.status === 'Verified'}
+                                  onChange={(e) => handleOrderItemAvailabilityChange(idx, e.target.checked)}
+                                />
+                              </label>
+                            </div>
+
+                            <div className="verify-card-body">
+                              <div className="verify-card-row">
+                                <span className="v-label">{t("Requested Qty")}</span>
+                                <span className="v-value">{item.requested_quantity}</span>
+                              </div>
+                              <div className="verify-card-row">
+                                <span className="v-label">{t("Approved Qty")}</span>
+                                <input 
+                                  type="number" 
+                                  className="form-input verify-qty-input-mobile"
+                                  value={item.approved_quantity}
+                                  disabled={item.available_in_stock === false || selectedOrder.status === 'Verified'}
+                                  onChange={(e) => handleOrderItemQtyChange(idx, e.target.value)}
+                                />
+                              </div>
+                              <div className="verify-card-row">
+                                <span className="v-label">{t("Selling Price")}</span>
+                                <span className="v-value">₹{item.selling_price.toFixed(2)}</span>
+                              </div>
+                              <div className="verify-card-row total-highlight-row">
+                                <span className="v-label">{t("Total")}</span>
+                                <strong className="v-total-price">₹{(item.selling_price * item.approved_quantity).toFixed(2)}</strong>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
 
                     {/* Billing Summary & Actions */}
