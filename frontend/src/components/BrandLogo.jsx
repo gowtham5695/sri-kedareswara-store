@@ -1,8 +1,8 @@
 import React from 'react';
 
 /**
- * Premium Brand Logo Component for SRI KEDARESWARA ENTERPRISES
- * Combining Plumbing (Water Drop / Pipe) & Electrical (Lightning Bolt)
+ * Premium Brand Logo Option 2 for SRI KEDARESWARA ENTERPRISES
+ * Clean horizontal lockup with Water Drop Pipe + Golden Lightning Plug Icon
  */
 export default function BrandLogo({ 
   variant = 'full', // 'full' | 'horizontal' | 'vertical' | 'icon'
@@ -12,10 +12,10 @@ export default function BrandLogo({
 }) {
   const getScale = () => {
     switch (size) {
-      case 'sm': return { icon: 34, text: 0.85 };
-      case 'lg': return { icon: 52, text: 1.25 };
-      case 'xl': return { icon: 72, text: 1.6 };
-      default: return { icon: 42, text: 1 };
+      case 'sm': return { icon: 36, text: 0.85 };
+      case 'lg': return { icon: 56, text: 1.25 };
+      case 'xl': return { icon: 76, text: 1.6 };
+      default: return { icon: 46, text: 1 };
     }
   };
 
@@ -25,7 +25,7 @@ export default function BrandLogo({
   const textColorSub = theme === 'white' ? '#93C5FD' : '#2563EB';
   const textColorTag = theme === 'white' ? '#FDE047' : '#D97706';
 
-  // Integrated SVG Icon combining Water Drop + Pipe + Lightning Bolt
+  // Logo Option 2: Sleek Shield Badge with Plumbing Arc & Electric Lightning Spark
   const LogoSymbol = (
     <svg 
       width={iconSize} 
@@ -35,38 +35,40 @@ export default function BrandLogo({
       xmlns="http://www.w3.org/2000/svg"
       className="brand-logo-svg"
     >
-      {/* Background Badge Shield */}
-      <rect width="100" height="100" rx="24" fill={theme === 'white' ? 'rgba(255,255,255,0.15)' : '#0F172A'} />
+      {/* Outer Hex-Shield Badge */}
+      <rect width="96" height="96" x="2" y="2" rx="22" fill="#0F172A" stroke="#F59E0B" strokeWidth="2.5" />
       
-      {/* Plumbing: Water Drop & Pipe Arc */}
+      {/* Outer Water Pipe Ring Arc (Plumbing) */}
       <path 
-        d="M50 18 C34 40 24 50 24 64 C24 78.36 35.64 90 50 90 C64.36 90 76 78.36 76 64 C76 50 66 40 50 18 Z" 
-        fill="url(#waterGrad)" 
+        d="M22 50 C22 34.5 34.5 22 50 22 C65.5 22 78 34.5 78 50 C78 65.5 65.5 78 50 78 C42 78 35 74.5 30 69" 
+        stroke="url(#waterGradOpt2)" 
+        strokeWidth="9" 
+        strokeLinecap="round" 
       />
 
-      {/* Water Drop Inner Highlight */}
+      {/* Water Drop Highlight Bubble */}
+      <circle cx="28" cy="34" r="5" fill="#38BDF8" />
+
+      {/* Center Golden Lightning Bolt & Plug Spark (Electrical) */}
       <path 
-        d="M38 58 C38 48 44 40 50 30 C48 38 42 46 42 56 C42 62 45 68 50 72 C43 70 38 65 38 58 Z" 
-        fill="#FFFFFF" 
-        opacity="0.35" 
+        d="M55 24 L36 52 H50 L43 76 L66 48 H52 L57 24 Z" 
+        fill="url(#boltGradOpt2)" 
+        filter="drop-shadow(0px 2px 5px rgba(0,0,0,0.4))"
       />
 
-      {/* Electrical: Golden Lightning Bolt */}
-      <path 
-        d="M54 26 L36 54 H50 L44 80 L66 50 H52 L58 26 Z" 
-        fill="url(#boltGrad)" 
-        filter="drop-shadow(0px 2px 4px rgba(0,0,0,0.3))"
-      />
+      {/* Electric Plug Prongs */}
+      <rect x="42" y="14" width="4" height="8" rx="2" fill="#FBBF24" />
+      <rect x="54" y="14" width="4" height="8" rx="2" fill="#FBBF24" />
 
       {/* Gradients */}
       <defs>
-        <linearGradient id="waterGrad" x1="24" y1="18" x2="76" y2="90" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#38BDF8" />
-          <stop offset="100%" stopColor="#1D4ED8" />
+        <linearGradient id="waterGradOpt2" x1="22" y1="22" x2="78" y2="78" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#0284C7" />
+          <stop offset="100%" stopColor="#2563EB" />
         </linearGradient>
 
-        <linearGradient id="boltGrad" x1="36" y1="26" x2="66" y2="80" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#FBBF24" />
+        <linearGradient id="boltGradOpt2" x1="36" y1="24" x2="66" y2="76" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stopColor="#FDE047" />
           <stop offset="100%" stopColor="#F59E0B" />
         </linearGradient>
       </defs>
