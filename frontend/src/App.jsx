@@ -1192,11 +1192,13 @@ function App() {
                   setSubcategoryFilter('All');
                 }}
               >
-                <div className="cat-icon-badge bg-blue">🚰</div>
+                <div className="cat-icon-circle bg-blue">🚰</div>
                 <div className="cat-card-text">
                   <strong>{t("Plumbing")}</strong>
-                  <span>Pipes, Fittings & Valves</span>
+                  <span className="te-subtext">ప్లంబింగ్</span>
+                  <span className="desc-subtext">Pipes • Fittings • Valves</span>
                 </div>
+                <div className="cat-arrow-badge bg-blue-arrow">›</div>
               </div>
 
               <div 
@@ -1206,15 +1208,17 @@ function App() {
                   setSubcategoryFilter('All');
                 }}
               >
-                <div className="cat-icon-badge bg-amber">⚡</div>
+                <div className="cat-icon-circle bg-amber">⚡</div>
                 <div className="cat-card-text">
                   <strong>{t("Electrical")}</strong>
-                  <span>Wires, Switches & MCB</span>
+                  <span className="te-subtext">ఎలక్ట్రికల్</span>
+                  <span className="desc-subtext">Wires • Switches • MCB</span>
                 </div>
+                <div className="cat-arrow-badge bg-amber-arrow">›</div>
               </div>
             </div>
 
-            {/* 3. Equal Height Action Buttons */}
+            {/* 3. Equal Height & Equal Width Action Buttons */}
             <div className="hero-equal-actions-row">
               <button 
                 className="btn-hero-action primary-action"
@@ -1227,30 +1231,30 @@ function App() {
               </button>
 
               <a href="tel:7997696636" className="btn-hero-action secondary-action">
-                📞 Contact
+                📞 Contact Us
               </a>
             </div>
 
-            {/* 4. Trust Indicators */}
+            {/* 4. Trust Bar */}
             <div className="hero-trust-indicators-row">
-              <span className="trust-item"><CheckCircle2 size={15} className="check-icon" /> Genuine Products</span>
-              <span className="trust-item"><CheckCircle2 size={15} className="check-icon" /> Best Prices</span>
-              <span className="trust-item"><CheckCircle2 size={15} className="check-icon" /> Expert Support</span>
+              <span className="trust-item"><CheckCircle2 size={16} className="check-icon" /> Genuine Products</span>
+              <span className="trust-item"><CheckCircle2 size={16} className="check-icon" /> Best Prices</span>
+              <span className="trust-item"><CheckCircle2 size={16} className="check-icon" /> Expert Support</span>
             </div>
           </section>
 
-          {/* 5. Horizontal Filter Chips directly below the Hero */}
+          {/* 5. SINGLE Horizontal Filter Chips Row (No Duplicate Filter Rows!) */}
           <div className="compact-app-filter-chips margin-below-hero">
             {[
-              { label: t("All"), cat: 'All', sub: 'All' },
-              { label: t("Pipes"), cat: 'Plumbing', sub: 'Pipes' },
-              { label: t("Fittings"), cat: 'Plumbing', sub: 'PVC Fittings' },
-              { label: t("Valves"), cat: 'Plumbing', sub: 'Valves' },
-              { label: t("Wires"), cat: 'Electrical', sub: 'Wires & Cables' },
-              { label: t("Switches"), cat: 'Electrical', sub: 'Switches & Socket' },
-              { label: t("MCB"), cat: 'Electrical', sub: 'MCB & Distribution' },
-              { label: t("Sockets"), cat: 'Electrical', sub: 'Switches & Socket' },
-              { label: t("Accessories"), cat: 'Plumbing', sub: 'Bathroom Accessories' }
+              { label: 'All', cat: 'All', sub: 'All' },
+              { label: 'Pipes', cat: 'Plumbing', sub: 'Pipes' },
+              { label: 'Fittings', cat: 'Plumbing', sub: 'PVC Fittings' },
+              { label: 'Valves', cat: 'Plumbing', sub: 'Valves' },
+              { label: 'Wires', cat: 'Electrical', sub: 'Wires & Cables' },
+              { label: 'Switches', cat: 'Electrical', sub: 'Switches & Socket' },
+              { label: 'MCB', cat: 'Electrical', sub: 'MCB & Distribution' },
+              { label: 'Sockets', cat: 'Electrical', sub: 'Switches & Socket' },
+              { label: 'Accessories', cat: 'Plumbing', sub: 'Bathroom Accessories' }
             ].map((chip) => {
               const isActive = (chip.cat === 'All' && categoryFilter === 'All') ||
                 (categoryFilter === chip.cat && (chip.sub === 'All' || subcategoryFilter === chip.sub));
@@ -1270,21 +1274,6 @@ function App() {
           </div>
 
           <div id="catalog-products-list"></div>
-
-          {/* Subcategories selector */}
-          {subcategories.length > 2 && (
-            <div className="subcategory-chips fade-in">
-              {subcategories.map(sub => (
-                <button
-                  key={sub}
-                  className={`sub-chip ${subcategoryFilter === sub ? 'active' : ''}`}
-                  onClick={() => setSubcategoryFilter(sub)}
-                >
-                  {t(sub)}
-                </button>
-              ))}
-            </div>
-          )}
 
           {/* Products Catalog Grid */}
           {loading ? (
