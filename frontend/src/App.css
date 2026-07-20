@@ -653,10 +653,20 @@
 /* Admin Tabs */
 .admin-tabs {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0.5rem;
   gap: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   border-radius: var(--border-radius-sm);
+  flex-wrap: wrap;
+}
+
+.admin-tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex: 1;
+  flex-wrap: wrap;
 }
 
 .admin-tab-btn {
@@ -669,6 +679,7 @@
   cursor: pointer;
   font-weight: 600;
   font-size: 0.9rem;
+  white-space: nowrap;
   transition: all var(--transition-fast);
 }
 
@@ -680,6 +691,13 @@
 .admin-tab-btn.active {
   background-color: var(--bg-tertiary);
   color: var(--accent-primary);
+}
+
+.admin-logout-btn {
+  margin-left: auto;
+  min-height: 36px;
+  height: 36px;
+  white-space: nowrap;
 }
 
 /* Admin Orders Layout */
@@ -776,6 +794,8 @@
 
 .order-detail-view {
   padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .workspace-header {
@@ -789,9 +809,19 @@
   gap: 1rem;
 }
 
+.workspace-header-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
 .workspace-header h2 {
   font-size: 1.4rem;
   font-weight: 700;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .customer-info-box {
@@ -1675,13 +1705,59 @@
   .admin-tabs {
     width: 100%;
     margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  .admin-tabs-nav {
+    display: flex;
+    overflow-x: auto;
+    width: 100%;
+    max-width: 100%;
+    gap: 0.35rem;
+    padding-bottom: 0.25rem;
+    -webkit-overflow-scrolling: touch;
   }
 
   .admin-tab-btn {
-    flex: 1;
+    flex: 0 0 auto;
     text-align: center;
-    padding: 0.5rem 0.25rem;
+    padding: 0.55rem 0.75rem;
     font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  .admin-logout-btn {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .order-detail-view {
+    padding: 0.85rem !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .workspace-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .workspace-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .customer-info-box {
+    padding: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
 

@@ -1659,8 +1659,8 @@ function App() {
           ) : (
             <>
               {/* Admin Header Tabs */}
-              <div className="admin-tabs glass-panel" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.75rem' }}>
-                <div style={{ display: 'flex', gap: '0.5rem', flex: 1, flexWrap: 'wrap' }}>
+              <div className="admin-tabs glass-panel">
+                <div className="admin-tabs-nav">
                   <button 
                     className={`admin-tab-btn ${adminSubTab === 'orders' ? 'active' : ''}`}
                     onClick={() => setAdminSubTab('orders')}
@@ -1685,7 +1685,6 @@ function App() {
                   type="button"
                   className="btn btn-danger btn-sm admin-logout-btn"
                   onClick={handleAdminLogout}
-                  style={{ marginLeft: 'auto', minHeight: '36px', height: '36px' }}
                 >
                   Logout / లాగ్అవుట్
                 </button>
@@ -1735,11 +1734,10 @@ function App() {
                 {selectedOrder ? (
                   <div className="order-detail-view glass-panel fade-in">
                     <div className="workspace-header">
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                      <div className="workspace-header-title">
                         <button 
                           type="button"
                           className="btn btn-secondary mobile-back-btn" 
-                          style={{ display: 'none' }}
                           onClick={() => setSelectedOrder(null)}
                         >
                           ← {t("Back")}
