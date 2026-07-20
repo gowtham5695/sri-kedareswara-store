@@ -1168,146 +1168,80 @@ function App() {
             </div>
           )}
 
-          {/* --- COMPACT MOBILE-FIRST HERO SECTION (FIRST SCREEN FIT) --- */}
-          <section className="compact-hero-card glass-panel fade-in">
-            {/* Glassmorphism Search Bar */}
-            <div className="hero-search-wrapper">
-              <Search size={20} className="hero-search-icon" />
+          {/* --- APP STOREFRONT HEADER SEARCH & CATEGORIES --- */}
+          <div className="storefront-app-view fade-in">
+            {/* ONE Single Search Bar */}
+            <div className="single-app-search-box glass-panel">
+              <Search size={20} className="app-search-icon" />
               <input 
                 type="text" 
-                className="hero-search-input"
+                className="app-search-input"
                 placeholder={t("Search pipes, fittings, wires, switches...")} 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              {searchTerm && <X size={20} className="hero-clear-icon" onClick={() => setSearchTerm('')} />}
+              {searchTerm && <X size={20} className="app-clear-icon" onClick={() => setSearchTerm('')} />}
             </div>
 
-            {/* Category Cards Grid (2x2) */}
-            <div className="hero-category-grid">
+            {/* TWO Primary Category Cards */}
+            <div className="two-primary-categories-grid">
               <div 
-                className={`hero-cat-card card-plumbing ${categoryFilter === 'Plumbing' && subcategoryFilter === 'All' ? 'active' : ''}`}
+                className={`primary-cat-card card-plumbing ${categoryFilter === 'Plumbing' ? 'active' : ''}`}
                 onClick={() => {
                   setCategoryFilter('Plumbing');
                   setSubcategoryFilter('All');
-                  const catElem = document.getElementById('catalog-section');
-                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                <div className="cat-icon-badge bg-blue">🚰</div>
-                <div className="cat-card-info">
+                <div className="cat-icon-circle bg-blue">🚰</div>
+                <div className="cat-card-details">
                   <strong>{t("Plumbing")}</strong>
-                  <span>Pipes, Elbows, Valves</span>
+                  <span>Pipes, Fittings & Valves</span>
                 </div>
               </div>
 
               <div 
-                className={`hero-cat-card card-electrical ${categoryFilter === 'Electrical' && subcategoryFilter === 'All' ? 'active' : ''}`}
+                className={`primary-cat-card card-electrical ${categoryFilter === 'Electrical' ? 'active' : ''}`}
                 onClick={() => {
                   setCategoryFilter('Electrical');
                   setSubcategoryFilter('All');
-                  const catElem = document.getElementById('catalog-section');
-                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
-                <div className="cat-icon-badge bg-amber">⚡</div>
-                <div className="cat-card-info">
+                <div className="cat-icon-circle bg-amber">⚡</div>
+                <div className="cat-card-details">
                   <strong>{t("Electrical")}</strong>
-                  <span>Wires, Cables, MCBs</span>
-                </div>
-              </div>
-
-              <div 
-                className={`hero-cat-card card-bathroom ${categoryFilter === 'Plumbing' && subcategoryFilter === 'Bathroom Accessories' ? 'active' : ''}`}
-                onClick={() => {
-                  setCategoryFilter('Plumbing');
-                  setSubcategoryFilter('Bathroom Accessories');
-                  const catElem = document.getElementById('catalog-section');
-                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <div className="cat-icon-badge bg-cyan">💧</div>
-                <div className="cat-card-info">
-                  <strong>{t("Bathroom Accessories")}</strong>
-                  <span>Taps, Showers, Fittings</span>
-                </div>
-              </div>
-
-              <div 
-                className={`hero-cat-card card-wiring ${categoryFilter === 'Electrical' && subcategoryFilter === 'Switches & Socket' ? 'active' : ''}`}
-                onClick={() => {
-                  setCategoryFilter('Electrical');
-                  setSubcategoryFilter('Switches & Socket');
-                  const catElem = document.getElementById('catalog-section');
-                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                <div className="cat-icon-badge bg-orange">🔌</div>
-                <div className="cat-card-info">
-                  <strong>{t("Switches & Wiring")}</strong>
-                  <span>Modular Switches, Boxes</span>
+                  <span>Wires, Switches & MCB</span>
                 </div>
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="hero-compact-cta">
-              <button 
-                className="btn-compact-primary"
-                onClick={() => {
-                  const catElem = document.getElementById('catalog-section');
-                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Browse Products →
-              </button>
-
-              <a href="tel:7997696636" className="btn-compact-secondary">
-                📞 Contact
-              </a>
-            </div>
-
-            {/* Trust Row */}
-            <div className="hero-compact-trust-row">
-              <span className="trust-pill"><CheckCircle2 size={14} className="check-gold" /> Genuine Products</span>
-              <span className="trust-pill"><CheckCircle2 size={14} className="check-gold" /> Best Prices</span>
-              <span className="trust-pill"><CheckCircle2 size={14} className="check-gold" /> Expert Support</span>
-            </div>
-          </section>
-
-          {/* Filtering and Search Controls */}
-          <div id="catalog-section" className="catalog-controls glass-panel">
-            <div className="search-box">
-              <Search size={18} className="search-icon" />
-              <input 
-                type="text" 
-                placeholder={t("Search pipes, wires, nipples, elbows...")} 
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              {searchTerm && <X size={18} className="clear-icon" onClick={() => setSearchTerm('')} />}
-            </div>
-
-            <div className="filter-group">
-              <Filter size={16} />
-              <button 
-                className={`filter-chip filter-chip-all ${categoryFilter === 'All' ? 'active' : ''}`}
-                onClick={() => { setCategoryFilter('All'); setSubcategoryFilter('All'); }}
-              >
-                {t("All")}
-              </button>
-              <button 
-                className={`filter-chip filter-chip-electrical ${categoryFilter === 'Electrical' ? 'active' : ''}`}
-                onClick={() => { setCategoryFilter('Electrical'); setSubcategoryFilter('All'); }}
-              >
-                ⚡ {t("Electrical")}
-              </button>
-              <button 
-                className={`filter-chip filter-chip-plumbing ${categoryFilter === 'Plumbing' ? 'active' : ''}`}
-                onClick={() => { setCategoryFilter('Plumbing'); setSubcategoryFilter('All'); }}
-              >
-                🚰 {t("Plumbing")}
-              </button>
+            {/* Compact Horizontally Scrollable Filter Chips */}
+            <div className="compact-app-filter-chips">
+              {[
+                { label: t("All"), cat: 'All', sub: 'All' },
+                { label: t("Pipes"), cat: 'Plumbing', sub: 'Pipes' },
+                { label: t("Fittings"), cat: 'Plumbing', sub: 'PVC Fittings' },
+                { label: t("Valves"), cat: 'Plumbing', sub: 'Valves' },
+                { label: t("Wires"), cat: 'Electrical', sub: 'Wires & Cables' },
+                { label: t("Switches"), cat: 'Electrical', sub: 'Switches & Socket' },
+                { label: t("MCB"), cat: 'Electrical', sub: 'MCB & Distribution' },
+                { label: t("Sockets"), cat: 'Electrical', sub: 'Switches & Socket' },
+                { label: t("Accessories"), cat: 'Plumbing', sub: 'Bathroom Accessories' }
+              ].map((chip) => {
+                const isActive = (chip.cat === 'All' && categoryFilter === 'All') ||
+                  (categoryFilter === chip.cat && (chip.sub === 'All' || subcategoryFilter === chip.sub));
+                return (
+                  <button
+                    key={chip.label}
+                    className={`app-filter-chip ${isActive ? 'active' : ''}`}
+                    onClick={() => {
+                      setCategoryFilter(chip.cat);
+                      setSubcategoryFilter(chip.sub);
+                    }}
+                  >
+                    {chip.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
 
