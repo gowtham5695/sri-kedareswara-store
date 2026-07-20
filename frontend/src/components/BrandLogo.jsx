@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Official Brand Logo Component for SRI KEDARESWARA ENTERPRISES
- * Renders the official uploaded business logo image cleanly
+ * Renders the official uploaded business logo image at 52px height
  */
 export default function BrandLogo({ 
   variant = 'full', 
@@ -12,10 +12,10 @@ export default function BrandLogo({
 }) {
   const getHeight = () => {
     switch (size) {
-      case 'sm': return 36;
-      case 'lg': return 56;
+      case 'sm': return 38;
+      case 'lg': return 58;
       case 'xl': return 72;
-      default: return 44;
+      default: return 52; // 52px height requirement
     }
   };
 

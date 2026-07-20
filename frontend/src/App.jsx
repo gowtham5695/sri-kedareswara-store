@@ -1168,82 +1168,108 @@ function App() {
             </div>
           )}
 
-          {/* --- APP STOREFRONT HEADER SEARCH & CATEGORIES --- */}
-          <div className="storefront-app-view fade-in">
-            {/* ONE Single Search Bar */}
-            <div className="single-app-search-box glass-panel">
-              <Search size={20} className="app-search-icon" />
+          {/* --- REFINED HERO CONTAINER --- */}
+          <section className="refined-hero-card glass-panel fade-in">
+            {/* 1. ONE Search Bar */}
+            <div className="single-hero-search-wrapper">
+              <Search size={20} className="hero-search-icon" />
               <input 
                 type="text" 
-                className="app-search-input"
+                className="hero-search-input"
                 placeholder={t("Search pipes, fittings, wires, switches...")} 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
-              {searchTerm && <X size={20} className="app-clear-icon" onClick={() => setSearchTerm('')} />}
+              {searchTerm && <X size={20} className="hero-clear-icon" onClick={() => setSearchTerm('')} />}
             </div>
 
-            {/* TWO Primary Category Cards */}
-            <div className="two-primary-categories-grid">
+            {/* 2. Equal Width & Equal Height Category Cards */}
+            <div className="hero-equal-category-grid">
               <div 
-                className={`primary-cat-card card-plumbing ${categoryFilter === 'Plumbing' ? 'active' : ''}`}
+                className={`equal-cat-card card-plumbing ${categoryFilter === 'Plumbing' && subcategoryFilter === 'All' ? 'active' : ''}`}
                 onClick={() => {
                   setCategoryFilter('Plumbing');
                   setSubcategoryFilter('All');
                 }}
               >
-                <div className="cat-icon-circle bg-blue">🚰</div>
-                <div className="cat-card-details">
+                <div className="cat-icon-badge bg-blue">🚰</div>
+                <div className="cat-card-text">
                   <strong>{t("Plumbing")}</strong>
                   <span>Pipes, Fittings & Valves</span>
                 </div>
               </div>
 
               <div 
-                className={`primary-cat-card card-electrical ${categoryFilter === 'Electrical' ? 'active' : ''}`}
+                className={`equal-cat-card card-electrical ${categoryFilter === 'Electrical' && subcategoryFilter === 'All' ? 'active' : ''}`}
                 onClick={() => {
                   setCategoryFilter('Electrical');
                   setSubcategoryFilter('All');
                 }}
               >
-                <div className="cat-icon-circle bg-amber">⚡</div>
-                <div className="cat-card-details">
+                <div className="cat-icon-badge bg-amber">⚡</div>
+                <div className="cat-card-text">
                   <strong>{t("Electrical")}</strong>
                   <span>Wires, Switches & MCB</span>
                 </div>
               </div>
             </div>
 
-            {/* Compact Horizontally Scrollable Filter Chips */}
-            <div className="compact-app-filter-chips">
-              {[
-                { label: t("All"), cat: 'All', sub: 'All' },
-                { label: t("Pipes"), cat: 'Plumbing', sub: 'Pipes' },
-                { label: t("Fittings"), cat: 'Plumbing', sub: 'PVC Fittings' },
-                { label: t("Valves"), cat: 'Plumbing', sub: 'Valves' },
-                { label: t("Wires"), cat: 'Electrical', sub: 'Wires & Cables' },
-                { label: t("Switches"), cat: 'Electrical', sub: 'Switches & Socket' },
-                { label: t("MCB"), cat: 'Electrical', sub: 'MCB & Distribution' },
-                { label: t("Sockets"), cat: 'Electrical', sub: 'Switches & Socket' },
-                { label: t("Accessories"), cat: 'Plumbing', sub: 'Bathroom Accessories' }
-              ].map((chip) => {
-                const isActive = (chip.cat === 'All' && categoryFilter === 'All') ||
-                  (categoryFilter === chip.cat && (chip.sub === 'All' || subcategoryFilter === chip.sub));
-                return (
-                  <button
-                    key={chip.label}
-                    className={`app-filter-chip ${isActive ? 'active' : ''}`}
-                    onClick={() => {
-                      setCategoryFilter(chip.cat);
-                      setSubcategoryFilter(chip.sub);
-                    }}
-                  >
-                    {chip.label}
-                  </button>
-                );
-              })}
+            {/* 3. Equal Height Action Buttons */}
+            <div className="hero-equal-actions-row">
+              <button 
+                className="btn-hero-action primary-action"
+                onClick={() => {
+                  const catalogElem = document.getElementById('catalog-products-list');
+                  if (catalogElem) catalogElem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Browse Products →
+              </button>
+
+              <a href="tel:7997696636" className="btn-hero-action secondary-action">
+                📞 Contact
+              </a>
             </div>
+
+            {/* 4. Trust Indicators */}
+            <div className="hero-trust-indicators-row">
+              <span className="trust-item"><CheckCircle2 size={15} className="check-icon" /> Genuine Products</span>
+              <span className="trust-item"><CheckCircle2 size={15} className="check-icon" /> Best Prices</span>
+              <span className="trust-item"><CheckCircle2 size={15} className="check-icon" /> Expert Support</span>
+            </div>
+          </section>
+
+          {/* 5. Horizontal Filter Chips directly below the Hero */}
+          <div className="compact-app-filter-chips margin-below-hero">
+            {[
+              { label: t("All"), cat: 'All', sub: 'All' },
+              { label: t("Pipes"), cat: 'Plumbing', sub: 'Pipes' },
+              { label: t("Fittings"), cat: 'Plumbing', sub: 'PVC Fittings' },
+              { label: t("Valves"), cat: 'Plumbing', sub: 'Valves' },
+              { label: t("Wires"), cat: 'Electrical', sub: 'Wires & Cables' },
+              { label: t("Switches"), cat: 'Electrical', sub: 'Switches & Socket' },
+              { label: t("MCB"), cat: 'Electrical', sub: 'MCB & Distribution' },
+              { label: t("Sockets"), cat: 'Electrical', sub: 'Switches & Socket' },
+              { label: t("Accessories"), cat: 'Plumbing', sub: 'Bathroom Accessories' }
+            ].map((chip) => {
+              const isActive = (chip.cat === 'All' && categoryFilter === 'All') ||
+                (categoryFilter === chip.cat && (chip.sub === 'All' || subcategoryFilter === chip.sub));
+              return (
+                <button
+                  key={chip.label}
+                  className={`app-filter-chip ${isActive ? 'active' : ''}`}
+                  onClick={() => {
+                    setCategoryFilter(chip.cat);
+                    setSubcategoryFilter(chip.sub);
+                  }}
+                >
+                  {chip.label}
+                </button>
+              );
+            })}
           </div>
+
+          <div id="catalog-products-list"></div>
 
           {/* Subcategories selector */}
           {subcategories.length > 2 && (
