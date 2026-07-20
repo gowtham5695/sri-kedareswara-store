@@ -1194,7 +1194,7 @@ function App() {
               >
                 <div className="cat-icon-circle bg-blue">🚰</div>
                 <div className="cat-card-text">
-                  <strong>{t("Plumbing")}</strong>
+                  <strong>Plumbing</strong>
                   <span className="te-subtext">ప్లంబింగ్</span>
                   <span className="desc-subtext">Pipes • Fittings • Valves</span>
                 </div>
@@ -1210,7 +1210,7 @@ function App() {
               >
                 <div className="cat-icon-circle bg-amber">⚡</div>
                 <div className="cat-card-text">
-                  <strong>{t("Electrical")}</strong>
+                  <strong>Electrical</strong>
                   <span className="te-subtext">ఎలక్ట్రికల్</span>
                   <span className="desc-subtext">Wires • Switches • MCB</span>
                 </div>
