@@ -212,8 +212,8 @@
 }
 
 .official-brand-logo-img {
-  height: 90px !important; /* Prominent large logo image for ultra readability */
-  max-height: 95px;
+  height: 100px !important; /* Prominent extra large logo for mobile & tablet */
+  max-height: 115px;
   width: auto;
   object-fit: contain;
 }
@@ -2734,14 +2734,14 @@
   .compact-header {
     max-width: 1320px !important;
     margin: 1.25rem auto 1.5rem !important;
-    padding: 1.25rem 2.5rem !important;
+    padding: 1rem 2.5rem !important;
     width: 100% !important;
     box-sizing: border-box !important;
   }
 
   .official-brand-logo-img {
-    height: 95px !important; /* Large crisp logo image on desktop */
-    max-height: 105px;
+    height: 125px !important; /* Extra large 125px logo image on desktop */
+    max-height: 135px;
   }
 
   .refined-hero-card {

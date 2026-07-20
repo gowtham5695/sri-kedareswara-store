@@ -2,7 +2,7 @@ import React from 'react';
 
 /**
  * Official Brand Logo Component for SRI KEDARESWARA ENTERPRISES
- * Renders the official uploaded business logo image at large 90px height for ultra readability
+ * Renders the official uploaded business logo image at extra large height for high visibility
  */
 export default function BrandLogo({ 
   variant = 'full', 
@@ -12,10 +12,10 @@ export default function BrandLogo({
 }) {
   const getHeight = () => {
     switch (size) {
-      case 'sm': return 60;
-      case 'lg': return 100;
-      case 'xl': return 110;
-      default: return 90; // Large 90px height for crystal clear logo and text
+      case 'sm': return 75;
+      case 'lg': return 130;
+      case 'xl': return 140;
+      default: return 110; // Extra Large 110px height for desktop & mobile prominence
     }
   };
 
