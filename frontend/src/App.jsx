@@ -1093,7 +1093,7 @@ function App() {
   return (
     <div className="app-container">
       {/* --- HEADER NAVBAR --- */}
-      <header className="main-header luxury-header">
+      <header className="compact-header glass-header">
         <div className="header-brand-wrapper">
           <div className="header-brand">
             <div className="brand-logo-badge">
@@ -1102,9 +1102,8 @@ function App() {
             <div className="header-brand-title-group">
               <h1 className="shop-title-main">
                 <span className="shop-title-en">SRI KEDARESWARA ENTERPRISES</span>
-                <span className="shop-title-te">శ్రీ కేదారేశ్వర ఎంటర్‌ప్రైజెస్</span>
               </h1>
-              <p className="shop-subtitle-tag">Your Trusted Plumbing & Electrical Partner • Trusted Since 1995</p>
+              <p className="shop-subtitle-tag">Trusted Plumbing & Electrical Solutions</p>
             </div>
           </div>
 
@@ -1116,7 +1115,7 @@ function App() {
             aria-label="Toggle navigation menu"
             aria-controls="header-navigation-menu"
           >
-            {isNavMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            {isNavMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
@@ -1176,124 +1175,110 @@ function App() {
             </div>
           )}
 
-          {/* --- REDESIGNED PREMIUM HERO SECTION --- */}
-          <section className="luxury-hero-section">
-            <div className="hero-ambient-glow glow-1"></div>
-            <div className="hero-ambient-glow glow-2"></div>
-            
-            <div className="hero-main-container">
-              {/* Left Column Text Content */}
-              <div className="hero-text-content fade-in-up">
-                <div className="hero-category-pills-bar">
-                  <span className="hero-category-pill pill-amber">⚡ Electrical</span>
-                  <span className="hero-category-pill pill-blue">🚰 Plumbing</span>
-                  <span className="hero-category-pill pill-slate">🛠️ Construction Supplies</span>
-                  <span className="hero-category-pill pill-orange">🎨 Hardware & Tools</span>
-                </div>
+          {/* --- COMPACT MOBILE-FIRST HERO SECTION (FIRST SCREEN FIT) --- */}
+          <section className="compact-hero-card glass-panel fade-in">
+            {/* Glassmorphism Search Bar */}
+            <div className="hero-search-wrapper">
+              <Search size={20} className="hero-search-icon" />
+              <input 
+                type="text" 
+                className="hero-search-input"
+                placeholder={t("Search pipes, fittings, wires, switches...")} 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              {searchTerm && <X size={20} className="hero-clear-icon" onClick={() => setSearchTerm('')} />}
+            </div>
 
-                <h1 className="hero-title-large">
-                  Everything You Need<br />
-                  For Your Home &<br />
-                  <span className="gradient-title">Construction Projects</span>
-                </h1>
-
-                <p className="hero-subtitle-lead">
-                  Premium Hardware • Electrical • Plumbing • Construction Supplies
-                </p>
-
-                <div className="hero-bullet-points">
-                  <div className="bullet-item">
-                    <CheckCircle2 size={16} className="bullet-icon" />
-                    <span>High-quality products & Best prices</span>
-                  </div>
-                  <div className="bullet-item">
-                    <CheckCircle2 size={16} className="bullet-icon" />
-                    <span>Trusted brands & Fast service</span>
-                  </div>
-                  <p className="hero-serving-note">
-                    Serving home owners, plumbers, electricians, contractors, builders & daily customers with genuine hardware products in Kovvur.
-                  </p>
-                </div>
-
-                <div className="hero-cta-actions">
-                  <button 
-                    className="btn-hero-primary"
-                    onClick={() => {
-                      const catalogElem = document.getElementById('catalog-section');
-                      if (catalogElem) catalogElem.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    🛒 Shop Now
-                  </button>
-
-                  <a 
-                    href="tel:7997696636" 
-                    className="btn-hero-secondary"
-                  >
-                    📞 Contact Us
-                  </a>
+            {/* Category Cards Grid (2x2) */}
+            <div className="hero-category-grid">
+              <div 
+                className={`hero-cat-card card-plumbing ${categoryFilter === 'Plumbing' && subcategoryFilter === 'All' ? 'active' : ''}`}
+                onClick={() => {
+                  setCategoryFilter('Plumbing');
+                  setSubcategoryFilter('All');
+                  const catElem = document.getElementById('catalog-section');
+                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <div className="cat-icon-badge bg-blue">🚰</div>
+                <div className="cat-card-info">
+                  <strong>{t("Plumbing")}</strong>
+                  <span>Pipes, Elbows, Valves</span>
                 </div>
               </div>
 
-              {/* Right Column 3D Visual & Floating Cards */}
-              <div className="hero-visual-column">
-                <div className="hero-3d-wrapper">
-                  <img 
-                    src="/images/hero_hardware_3d.png" 
-                    alt="Sri Kedareswara Hardware Plumbing & Electrical Supplies" 
-                    className="hero-3d-img floating-animation"
-                  />
+              <div 
+                className={`hero-cat-card card-electrical ${categoryFilter === 'Electrical' && subcategoryFilter === 'All' ? 'active' : ''}`}
+                onClick={() => {
+                  setCategoryFilter('Electrical');
+                  setSubcategoryFilter('All');
+                  const catElem = document.getElementById('catalog-section');
+                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <div className="cat-icon-badge bg-amber">⚡</div>
+                <div className="cat-card-info">
+                  <strong>{t("Electrical")}</strong>
+                  <span>Wires, Cables, MCBs</span>
+                </div>
+              </div>
 
-                  {/* Floating Glass Badges */}
-                  <div className="floating-card float-card-1 glass-card">
-                    <div className="float-icon-bg icon-green">✔</div>
-                    <div>
-                      <strong>Genuine Products</strong>
-                      <span>100% Original Quality</span>
-                    </div>
-                  </div>
+              <div 
+                className={`hero-cat-card card-bathroom ${categoryFilter === 'Plumbing' && subcategoryFilter === 'Bathroom Accessories' ? 'active' : ''}`}
+                onClick={() => {
+                  setCategoryFilter('Plumbing');
+                  setSubcategoryFilter('Bathroom Accessories');
+                  const catElem = document.getElementById('catalog-section');
+                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <div className="cat-icon-badge bg-cyan">💧</div>
+                <div className="cat-card-info">
+                  <strong>{t("Bathroom Accessories")}</strong>
+                  <span>Taps, Showers, Fittings</span>
+                </div>
+              </div>
 
-                  <div className="floating-card float-card-2 glass-card">
-                    <div className="float-icon-bg icon-blue">🚚</div>
-                    <div>
-                      <strong>Fast Delivery</strong>
-                      <span>Quick Shop Pickup</span>
-                    </div>
-                  </div>
-
-                  <div className="floating-card float-card-3 glass-card">
-                    <div className="float-icon-bg icon-gold">⭐</div>
-                    <div>
-                      <strong>Trusted Quality</strong>
-                      <span>Top Hardware Brands</span>
-                    </div>
-                  </div>
+              <div 
+                className={`hero-cat-card card-wiring ${categoryFilter === 'Electrical' && subcategoryFilter === 'Switches & Socket' ? 'active' : ''}`}
+                onClick={() => {
+                  setCategoryFilter('Electrical');
+                  setSubcategoryFilter('Switches & Socket');
+                  const catElem = document.getElementById('catalog-section');
+                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <div className="cat-icon-badge bg-orange">🔌</div>
+                <div className="cat-card-info">
+                  <strong>{t("Switches & Wiring")}</strong>
+                  <span>Modular Switches, Boxes</span>
                 </div>
               </div>
             </div>
 
-            {/* Bottom Trust Counter Section */}
-            <div className="hero-trust-bar glass-card">
-              <div className="trust-item">
-                <span className="trust-stars">★★★★★</span>
-                <strong className="trust-number">4.9</strong>
-                <span className="trust-label">Customer Rating</span>
-              </div>
-              <div className="trust-divider"></div>
-              <div className="trust-item">
-                <strong className="trust-number">5,000+</strong>
-                <span className="trust-label">Happy Customers</span>
-              </div>
-              <div className="trust-divider"></div>
-              <div className="trust-item">
-                <strong className="trust-number">100+</strong>
-                <span className="trust-label">Premium Brands</span>
-              </div>
-              <div className="trust-divider"></div>
-              <div className="trust-item">
-                <strong className="trust-number">15+ Years</strong>
-                <span className="trust-label">Trusted Experience</span>
-              </div>
+            {/* CTA Buttons */}
+            <div className="hero-compact-cta">
+              <button 
+                className="btn-compact-primary"
+                onClick={() => {
+                  const catElem = document.getElementById('catalog-section');
+                  if (catElem) catElem.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Browse Products →
+              </button>
+
+              <a href="tel:7997696636" className="btn-compact-secondary">
+                📞 Contact
+              </a>
+            </div>
+
+            {/* Trust Row */}
+            <div className="hero-compact-trust-row">
+              <span className="trust-pill"><CheckCircle2 size={14} className="check-gold" /> Genuine Products</span>
+              <span className="trust-pill"><CheckCircle2 size={14} className="check-gold" /> Best Prices</span>
+              <span className="trust-pill"><CheckCircle2 size={14} className="check-gold" /> Expert Support</span>
             </div>
           </section>
 
