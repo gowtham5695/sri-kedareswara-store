@@ -1,0 +1,33 @@
+<svg width="400" height="100" viewBox="0 0 400 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Brand Icon Badge -->
+  <g transform="translate(10, 10)">
+    <rect width="80" height="80" rx="20" fill="#0F172A"/>
+    <!-- Water Drop (Plumbing) -->
+    <path d="M40 14 C27 32 19 40 19 51 C19 62.6 28.4 72 40 72 C51.6 72 61 62.6 61 51 C61 40 53 32 40 14 Z" fill="url(#waterGrad)"/>
+    <!-- Water Drop Highlight -->
+    <path d="M30 46 C30 38 35 32 40 24 C38 30 33 37 33 45 C33 50 36 54 40 58 C34 56 30 52 30 46 Z" fill="#FFFFFF" opacity="0.35"/>
+    <!-- Lightning Bolt (Electrical) -->
+    <path d="M43 20 L29 43 H40 L35 64 L53 40 H42 L47 20 Z" fill="url(#boltGrad)" filter="url(#shadow)"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <g transform="translate(105, 30)">
+    <text x="0" y="20" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="20" fill="#0F172A" letter-spacing="1">SRI KEDARESWARA</text>
+    <text x="0" y="40" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="18" fill="#2563EB" letter-spacing="2">ENTERPRISES</text>
+    <text x="0" y="56" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="10" fill="#D97706" letter-spacing="1.5">PLUMBING &amp; ELECTRICAL SUPPLIES</text>
+  </g>
+
+  <defs>
+    <linearGradient id="waterGrad" x1="19" y1="14" x2="61" y2="72" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#1D4ED8"/>
+    </linearGradient>
+    <linearGradient id="boltGrad" x1="29" y1="20" x2="53" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FBBF24"/>
+      <stop offset="100%" stop-color="#F59E0B"/>
+    </linearGradient>
+    <filter id="shadow" x="0" y="0" width="100%" height="100%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+</svg>

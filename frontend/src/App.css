@@ -27,6 +27,55 @@
   gap: 1.25rem;
 }
 
+/* Brand Logo Component Styling */
+.brand-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.brand-logo-svg {
+  flex-shrink: 0;
+  filter: drop-shadow(0 4px 12px rgba(15, 23, 42, 0.12));
+  transition: transform 0.25s ease;
+}
+
+.brand-logo-container:hover .brand-logo-svg {
+  transform: scale(1.05);
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brand-name-en {
+  font-family: 'Poppins', var(--font-primary);
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.brand-sub-title {
+  font-family: 'Poppins', var(--font-primary);
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.05rem;
+}
+
+.brand-tagline-small {
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  margin-top: 0.15rem;
+  text-transform: uppercase;
+}
+
 .header-brand-title-group {
   display: flex;
   flex-direction: column;

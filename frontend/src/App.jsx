@@ -27,6 +27,7 @@ import {
   Lock
 } from 'lucide-react';
 import { generateInvoicePDF } from './pdfGenerator';
+import BrandLogo from './components/BrandLogo';
 import './App.css';
 
 const API_BASE = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
@@ -1096,15 +1097,7 @@ function App() {
       <header className="compact-header glass-header">
         <div className="header-brand-wrapper">
           <div className="header-brand">
-            <div className="brand-logo-badge">
-              <span className="logo-icon">💎</span>
-            </div>
-            <div className="header-brand-title-group">
-              <h1 className="shop-title-main">
-                <span className="shop-title-en">SRI KEDARESWARA ENTERPRISES</span>
-              </h1>
-              <p className="shop-subtitle-tag">Trusted Plumbing & Electrical Solutions</p>
-            </div>
+            <BrandLogo variant="horizontal" size="md" />
           </div>
 
           <button 
