@@ -11,7 +11,7 @@ export function generateInvoicePDF(order, settings = {}) {
   const pageWidth = doc.internal.pageSize.getWidth(); // 210
   const pageHeight = doc.internal.pageSize.getHeight(); // 297
 
-  const shopName = settings.shop_name || "SRIKEDARESWARA ENTERPRICES";
+  const shopName = settings.shop_name || "SRI KEDARESWARA ENTERPRISES";
   const shopAddress = settings.shop_address || "DOOR NO: 13-12-5, RAMA SCOIETY STREET, KOVVUR";
   const proprietorInfo = settings.proprietor_info || "PROP: N. Rajyalakshmi      PH NO: 7997696636";
   const bankName = settings.bank_name || "SBI, KOVVURU";

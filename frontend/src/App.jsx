@@ -290,7 +290,7 @@ const tName = (name) => {
 function App() {
   // Billing Config state
   const [billingSettings, setBillingSettings] = useState({
-    shop_name: "SRIKEDARESWARA ENTERPRICES",
+    shop_name: "SRI KEDARESWARA ENTERPRISES",
     shop_address: "DOOR NO: 13-12-5, RAMA SCOIETY STREET, KOVVUR",
     proprietor_info: "PROP: N. Rajyalakshmi      PH NO: 7997696636",
     bank_name: "SBI, KOVVURU",
@@ -1096,15 +1096,17 @@ function App() {
       <header className="main-header glass-panel">
         <div className="header-brand-wrapper">
           <div className="header-brand">
-            <div>
-              <h1>SRIKEDARESWARA ENTERPRICES / శ్రీ కేదారేశ్వర ఎంటర్‌ప్రైజెస్</h1>
-              <p>Electrical & Plumbing Materials Merchants | Kovvur / ఎలక్ట్రికల్ & ప్లంబింగ్ మెటీరియల్స్ మర్చంట్స్ | కొవ్వూరు</p>
+            <div className="header-brand-title-group">
+              <h1 className="shop-title-main">
+                <span className="shop-title-en">Sri Kedareswara Enterprises</span>
+                <span className="shop-title-te">శ్రీ కేదారేశ్వర ఎంటర్‌ప్రైజెస్</span>
+              </h1>
+              <p className="shop-subtitle-tag">Electrical & Plumbing Materials Merchants | Kovvur</p>
             </div>
 
             {/* Request Item Button */}
             <button
-              className="btn btn-secondary"
-              style={{ whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+              className="btn btn-secondary request-item-nav-btn"
               onClick={() => setIsRequestModalOpen(true)}
             >
               📝 {t("Request an Item")}
@@ -1168,11 +1170,12 @@ function App() {
             </div>
           )}
 
-          {/* Banner */}
-          <div className="hero-banner glass-panel">
+          {/* Clean Modern Hero Banner */}
+          <div className="hero-banner-v2 glass-panel">
             <div className="hero-content">
+              <span className="hero-pill-badge">✨ Electrical & Plumbing Materials Catalog</span>
               <h2>{t("Request Your Materials Online")}</h2>
-              <p>{t("Add electrical and plumbing items to your cart, submit your request, and collect them ready-billed at our shop!")}</p>
+              <p>{t("Add items to your cart, submit your request, and collect them ready-billed at our shop!")}</p>
             </div>
           </div>
 
