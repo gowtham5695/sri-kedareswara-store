@@ -1447,7 +1447,7 @@ function App() {
                         required 
                         value={customerDetails.name}
                         onChange={(e) => setCustomerDetails(prev => ({ ...prev, name: e.target.value }))}
-                        placeholder="e.g. Ramesh Kumar"
+                        placeholder="Enter Customer Name"
                       />
                     </div>
 
@@ -1459,7 +1459,7 @@ function App() {
                         required 
                         value={customerDetails.phone}
                         onChange={(e) => setCustomerDetails(prev => ({ ...prev, phone: e.target.value }))}
-                        placeholder="e.g. 9876543210"
+                        placeholder="Enter Phone Number"
                       />
                     </div>
 
@@ -1471,7 +1471,7 @@ function App() {
                         required 
                         value={customerDetails.address}
                         onChange={(e) => setCustomerDetails(prev => ({ ...prev, address: e.target.value }))}
-                        placeholder="e.g. Kovvuru"
+                        placeholder="Enter Address / Location"
                       />
                     </div>
 
@@ -1519,11 +1519,11 @@ function App() {
                       </p>
                       <div className="form-group">
                         <label className="form-label">{t("Your Name")}</label>
-                        <input className="form-input" placeholder={t("e.g. Ravi Kumar")} value={itemRequestForm.customer_name} onChange={e => setItemRequestForm(p => ({ ...p, customer_name: e.target.value }))} />
+                        <input className="form-input" placeholder={t("Enter Your Name")} value={itemRequestForm.customer_name} onChange={e => setItemRequestForm(p => ({ ...p, customer_name: e.target.value }))} />
                       </div>
                       <div className="form-group">
                         <label className="form-label">{t("Phone Number")}</label>
-                        <input className="form-input" type="tel" placeholder="9876543210" value={itemRequestForm.customer_phone} onChange={e => setItemRequestForm(p => ({ ...p, customer_phone: e.target.value }))} />
+                        <input className="form-input" type="tel" placeholder={t("Enter Phone Number")} value={itemRequestForm.customer_phone} onChange={e => setItemRequestForm(p => ({ ...p, customer_phone: e.target.value }))} />
                       </div>
                       <div className="form-group">
                         <label className="form-label">{t("Describe the Item Needed *")}</label>
@@ -1531,60 +1531,7 @@ function App() {
                           className="form-input"
                           rows={3}
                           required
-                          placeholder={t("e.g. CPVC 1 inch elbow, LED 9W bulb, GI pipe 1/2 inch...")}
-                          value={itemRequestForm.item_description}
-                          onChange={e => setItemRequestForm(p => ({ ...p, item_description: e.target.value }))}
-                          style={{ resize: 'vertical' }}
-                        />
-                      </div>
-                    </div>
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-secondary" onClick={() => setIsRequestModalOpen(false)}>{t("Cancel")}</button>
-                      <button type="submit" className="btn btn-primary" disabled={isSubmittingRequest}>
-                        {isSubmittingRequest ? t("Submitting...") : t("Submit Request")}
-                      </button>
-                    </div>
-                  </form>
-                )}
-              </div>
-            </div>
-          )}
-
-          {/* Customer Item Request Modal */}
-          {isRequestModalOpen && (
-            <div className="modal-overlay" onClick={() => setIsRequestModalOpen(false)}>
-              <div className="modal-content glass-panel" onClick={e => e.stopPropagation()} style={{ maxWidth: '480px' }}>
-                <div className="modal-header">
-                  <h2>📝 {t("Request an Item")}</h2>
-                  <button className="btn-close" onClick={() => setIsRequestModalOpen(false)}><X size={20} /></button>
-                </div>
-                {requestSubmitSuccess ? (
-                  <div className="modal-body" style={{ textAlign: 'center', padding: '2rem' }}>
-                    <CheckCircle2 size={48} style={{ color: '#10b981', marginBottom: '1rem' }} />
-                    <h3 style={{ color: '#10b981' }}>{t("Request Submitted!")}</h3>
-                    <p style={{ color: 'var(--text-secondary)', marginTop: '0.5rem' }}>{t("The shop admin will review your request and add the item if possible.")}</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmitItemRequest}>
-                    <div className="modal-body">
-                      <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem', fontSize: '0.875rem' }}>
-                        {t("Can't find what you're looking for? Let us know and we'll try to stock it!")}
-                      </p>
-                      <div className="form-group">
-                        <label className="form-label">{t("Your Name")}</label>
-                        <input className="form-input" placeholder={t("e.g. Ravi Kumar")} value={itemRequestForm.customer_name} onChange={e => setItemRequestForm(p => ({ ...p, customer_name: e.target.value }))} />
-                      </div>
-                      <div className="form-group">
-                        <label className="form-label">{t("Phone Number")}</label>
-                        <input className="form-input" type="tel" placeholder="9876543210" value={itemRequestForm.customer_phone} onChange={e => setItemRequestForm(p => ({ ...p, customer_phone: e.target.value }))} />
-                      </div>
-                      <div className="form-group">
-                        <label className="form-label">{t("Describe the Item Needed *")}</label>
-                        <textarea
-                          className="form-input"
-                          rows={3}
-                          required
-                          placeholder={t("e.g. CPVC 1 inch elbow, LED 9W bulb, GI pipe 1/2 inch...")}
+                          placeholder={t("Describe the item needed...")}
                           value={itemRequestForm.item_description}
                           onChange={e => setItemRequestForm(p => ({ ...p, item_description: e.target.value }))}
                           style={{ resize: 'vertical' }}
@@ -2343,7 +2290,7 @@ function App() {
                             required 
                             value={itemForm.name}
                             onChange={handleItemFormChange}
-                            placeholder={t("e.g. CPVC Elbow")}
+                            placeholder={t("Enter Item Name")}
                           />
                         </div>
 
@@ -2370,7 +2317,7 @@ function App() {
                               required 
                               value={itemForm.subcategory}
                               onChange={handleItemFormChange}
-                              placeholder="e.g. Pipes & Fittings"
+                              placeholder="Enter Subcategory"
                             />
                           </div>
                         </div>
@@ -2385,7 +2332,7 @@ function App() {
                               required 
                               value={itemForm.item_type}
                               onChange={handleItemFormChange}
-                              placeholder="e.g. CPVC"
+                              placeholder="Enter Item Type"
                             />
                           </div>
 
@@ -2398,7 +2345,7 @@ function App() {
                               required 
                               value={itemForm.size}
                               onChange={handleItemFormChange}
-                              placeholder="e.g. 1 inch, 1.5 mm"
+                              placeholder="Enter Size / Dimension"
                             />
                           </div>
                         </div>
@@ -2428,7 +2375,7 @@ function App() {
                               required 
                               value={itemForm.profit_percentage}
                               onChange={handleItemFormChange}
-                              placeholder="e.g. 15"
+                              placeholder="Enter Profit Margin (%)"
                             />
                           </div>
                         </div>
