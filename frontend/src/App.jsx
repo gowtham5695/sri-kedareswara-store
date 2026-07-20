@@ -1093,34 +1093,30 @@ function App() {
   return (
     <div className="app-container">
       {/* --- HEADER NAVBAR --- */}
-      <header className="main-header glass-panel">
+      <header className="main-header luxury-header">
         <div className="header-brand-wrapper">
           <div className="header-brand">
+            <div className="brand-logo-badge">
+              <span className="logo-icon">💎</span>
+            </div>
             <div className="header-brand-title-group">
               <h1 className="shop-title-main">
-                <span className="shop-title-en">Sri Kedareswara Enterprises</span>
+                <span className="shop-title-en">SRI KEDARESWARA ENTERPRISES</span>
                 <span className="shop-title-te">శ్రీ కేదారేశ్వర ఎంటర్‌ప్రైజెస్</span>
               </h1>
-              <p className="shop-subtitle-tag">Electrical & Plumbing Materials Merchants | Kovvur</p>
+              <p className="shop-subtitle-tag">Your Trusted Plumbing & Electrical Partner • Trusted Since 1995</p>
             </div>
-
-            {/* Request Item Button */}
-            <button
-              className="btn btn-secondary request-item-nav-btn"
-              onClick={() => setIsRequestModalOpen(true)}
-            >
-              📝 {t("Request an Item")}
-            </button>
           </div>
+
           <button 
             type="button"
-            className="mobile-nav-toggle"
+            className="mobile-nav-toggle luxury-hamburger"
             onClick={() => setIsNavMenuOpen(!isNavMenuOpen)}
             aria-expanded={isNavMenuOpen}
             aria-label="Toggle navigation menu"
             aria-controls="header-navigation-menu"
           >
-            {isNavMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isNavMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
@@ -1137,6 +1133,16 @@ function App() {
             }}
           >
             <ShoppingBag size={18} /> {t("Storefront")}
+          </button>
+
+          <button
+            className="btn btn-secondary request-item-nav-btn"
+            onClick={() => {
+              setIsRequestModalOpen(true);
+              setIsNavMenuOpen(false);
+            }}
+          >
+            📝 {t("Request an Item")}
           </button>
           
           {isAdminUnlocked && (
@@ -1170,8 +1176,129 @@ function App() {
             </div>
           )}
 
+          {/* --- REDESIGNED PREMIUM HERO SECTION --- */}
+          <section className="luxury-hero-section">
+            <div className="hero-ambient-glow glow-1"></div>
+            <div className="hero-ambient-glow glow-2"></div>
+            
+            <div className="hero-main-container">
+              {/* Left Column Text Content */}
+              <div className="hero-text-content fade-in-up">
+                <div className="hero-category-pills-bar">
+                  <span className="hero-category-pill pill-amber">⚡ Electrical</span>
+                  <span className="hero-category-pill pill-blue">🚰 Plumbing</span>
+                  <span className="hero-category-pill pill-slate">🛠️ Construction Supplies</span>
+                  <span className="hero-category-pill pill-orange">🎨 Hardware & Tools</span>
+                </div>
+
+                <h1 className="hero-title-large">
+                  Everything You Need<br />
+                  For Your Home &<br />
+                  <span className="gradient-title">Construction Projects</span>
+                </h1>
+
+                <p className="hero-subtitle-lead">
+                  Premium Hardware • Electrical • Plumbing • Construction Supplies
+                </p>
+
+                <div className="hero-bullet-points">
+                  <div className="bullet-item">
+                    <CheckCircle2 size={16} className="bullet-icon" />
+                    <span>High-quality products & Best prices</span>
+                  </div>
+                  <div className="bullet-item">
+                    <CheckCircle2 size={16} className="bullet-icon" />
+                    <span>Trusted brands & Fast service</span>
+                  </div>
+                  <p className="hero-serving-note">
+                    Serving home owners, plumbers, electricians, contractors, builders & daily customers with genuine hardware products in Kovvur.
+                  </p>
+                </div>
+
+                <div className="hero-cta-actions">
+                  <button 
+                    className="btn-hero-primary"
+                    onClick={() => {
+                      const catalogElem = document.getElementById('catalog-section');
+                      if (catalogElem) catalogElem.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    🛒 Shop Now
+                  </button>
+
+                  <a 
+                    href="tel:7997696636" 
+                    className="btn-hero-secondary"
+                  >
+                    📞 Contact Us
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column 3D Visual & Floating Cards */}
+              <div className="hero-visual-column">
+                <div className="hero-3d-wrapper">
+                  <img 
+                    src="/images/hero_hardware_3d.png" 
+                    alt="Sri Kedareswara Hardware Plumbing & Electrical Supplies" 
+                    className="hero-3d-img floating-animation"
+                  />
+
+                  {/* Floating Glass Badges */}
+                  <div className="floating-card float-card-1 glass-card">
+                    <div className="float-icon-bg icon-green">✔</div>
+                    <div>
+                      <strong>Genuine Products</strong>
+                      <span>100% Original Quality</span>
+                    </div>
+                  </div>
+
+                  <div className="floating-card float-card-2 glass-card">
+                    <div className="float-icon-bg icon-blue">🚚</div>
+                    <div>
+                      <strong>Fast Delivery</strong>
+                      <span>Quick Shop Pickup</span>
+                    </div>
+                  </div>
+
+                  <div className="floating-card float-card-3 glass-card">
+                    <div className="float-icon-bg icon-gold">⭐</div>
+                    <div>
+                      <strong>Trusted Quality</strong>
+                      <span>Top Hardware Brands</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Trust Counter Section */}
+            <div className="hero-trust-bar glass-card">
+              <div className="trust-item">
+                <span className="trust-stars">★★★★★</span>
+                <strong className="trust-number">4.9</strong>
+                <span className="trust-label">Customer Rating</span>
+              </div>
+              <div className="trust-divider"></div>
+              <div className="trust-item">
+                <strong className="trust-number">5,000+</strong>
+                <span className="trust-label">Happy Customers</span>
+              </div>
+              <div className="trust-divider"></div>
+              <div className="trust-item">
+                <strong className="trust-number">100+</strong>
+                <span className="trust-label">Premium Brands</span>
+              </div>
+              <div className="trust-divider"></div>
+              <div className="trust-item">
+                <strong className="trust-number">15+ Years</strong>
+                <span className="trust-label">Trusted Experience</span>
+              </div>
+            </div>
+          </section>
+
           {/* Filtering and Search Controls */}
-          <div className="catalog-controls glass-panel">
+          <div id="catalog-section" className="catalog-controls glass-panel">
             <div className="search-box">
               <Search size={18} className="search-icon" />
               <input 
