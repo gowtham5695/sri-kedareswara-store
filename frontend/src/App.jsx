@@ -1170,15 +1170,6 @@ function App() {
             </div>
           )}
 
-          {/* Clean Modern Hero Banner */}
-          <div className="hero-banner-v2 glass-panel">
-            <div className="hero-content">
-              <span className="hero-pill-badge">✨ Electrical & Plumbing Materials Catalog</span>
-              <h2>{t("Request Your Materials Online")}</h2>
-              <p>{t("Add items to your cart, submit your request, and collect them ready-billed at our shop!")}</p>
-            </div>
-          </div>
-
           {/* Filtering and Search Controls */}
           <div className="catalog-controls glass-panel">
             <div className="search-box">
@@ -1195,19 +1186,19 @@ function App() {
             <div className="filter-group">
               <Filter size={16} />
               <button 
-                className={`filter-chip ${categoryFilter === 'All' ? 'active' : ''}`}
+                className={`filter-chip filter-chip-all ${categoryFilter === 'All' ? 'active' : ''}`}
                 onClick={() => { setCategoryFilter('All'); setSubcategoryFilter('All'); }}
               >
                 {t("All")}
               </button>
               <button 
-                className={`filter-chip ${categoryFilter === 'Electrical' ? 'active' : ''}`}
+                className={`filter-chip filter-chip-electrical ${categoryFilter === 'Electrical' ? 'active' : ''}`}
                 onClick={() => { setCategoryFilter('Electrical'); setSubcategoryFilter('All'); }}
               >
                 ⚡ {t("Electrical")}
               </button>
               <button 
-                className={`filter-chip ${categoryFilter === 'Plumbing' ? 'active' : ''}`}
+                className={`filter-chip filter-chip-plumbing ${categoryFilter === 'Plumbing' ? 'active' : ''}`}
                 onClick={() => { setCategoryFilter('Plumbing'); setSubcategoryFilter('All'); }}
               >
                 🚰 {t("Plumbing")}
