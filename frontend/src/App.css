@@ -2724,98 +2724,102 @@
 /* --- DESKTOP & LAPTOP RESPONSIVE E-COMMERCE LAYOUT (>= 900px) --- */
 @media (min-width: 900px) {
   .container {
-    max-width: 1280px !important;
+    max-width: 1320px !important;
     margin: 0 auto !important;
     padding: 1.5rem 2rem !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .compact-header {
-    max-width: 1280px;
-    margin: 1rem auto 1.5rem;
-    padding: 1.25rem 2rem;
+    max-width: 1320px !important;
+    margin: 1.25rem auto 1.5rem !important;
+    padding: 1.25rem 2.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
 
   .official-brand-logo-img {
-    height: 95px !important; /* Full size logo on laptop/desktop */
-    max-height: 100px;
+    height: 95px !important; /* Large crisp logo image on desktop */
+    max-height: 105px;
   }
 
   .refined-hero-card {
-    max-width: 1280px;
-    margin: 0 auto 2rem;
-    padding: 2rem 2.5rem;
-    border-radius: 24px;
-    gap: 1.5rem;
-    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 2rem 0 !important;
+    padding: 2.25rem 2.5rem !important;
+    border-radius: 20px !important;
+    gap: 1.75rem !important;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06) !important;
+    box-sizing: border-box !important;
   }
 
   .single-hero-search-wrapper {
-    max-width: 100%;
+    width: 100% !important;
   }
 
   .hero-search-input {
-    height: 54px;
-    font-size: 1.05rem;
-    border-radius: 16px;
+    height: 56px !important;
+    font-size: 1.08rem !important;
+    border-radius: 16px !important;
   }
 
   .hero-equal-category-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 1.75rem !important;
+    width: 100% !important;
   }
 
   .equal-cat-card {
-    height: 90px;
-    padding: 1rem 1.5rem;
-    border-radius: 18px;
+    height: 96px !important;
+    min-height: 96px !important;
+    padding: 1.15rem 1.75rem !important;
+    border-radius: 18px !important;
   }
 
   .cat-icon-circle {
-    width: 54px;
-    height: 54px;
-    font-size: 1.65rem;
+    width: 56px !important;
+    height: 56px !important;
+    font-size: 1.75rem !important;
   }
 
   .cat-card-text strong {
-    font-size: 1.15rem;
+    font-size: 1.2rem !important;
   }
 
   .te-subtext {
-    font-size: 0.95rem;
+    font-size: 1rem !important;
   }
 
   .desc-subtext {
-    font-size: 0.82rem;
+    font-size: 0.86rem !important;
   }
 
   .hero-equal-actions-row {
-    grid-template-columns: 1.2fr 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1.2fr 1fr !important;
+    gap: 1.75rem !important;
+    width: 100% !important;
   }
 
   .btn-hero-action {
-    height: 52px;
-    font-size: 1.05rem;
-    border-radius: 16px;
+    height: 54px !important;
+    min-height: 54px !important;
+    font-size: 1.08rem !important;
+    border-radius: 16px !important;
   }
 
   .hero-trust-indicators-row {
-    font-size: 0.9rem;
-    padding-top: 1rem;
-    justify-content: space-around;
+    font-size: 0.95rem !important;
+    padding-top: 1.25rem !important;
+    justify-content: space-around !important;
   }
 
-  .products-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: 1.75rem !important;
-    padding: 0 !important;
-  }
-}
-
-@media (min-width: 1300px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr) !important;
+    gap: 1.75rem !important;
+    padding: 0 !important;
+    width: 100% !important;
   }
 }
 
