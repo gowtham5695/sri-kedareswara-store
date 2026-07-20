@@ -1759,6 +1759,68 @@
     grid-template-columns: 1fr;
     gap: 0.75rem;
   }
+
+  /* Down Area / Calculations & Footer Responsive Fixes */
+  .bill-calculations-box {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem;
+    padding: 0.85rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .discount-inputs {
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .discount-inputs .form-select,
+  .discount-inputs .form-input,
+  .discount-inputs button {
+    width: 100% !important;
+  }
+
+  .workspace-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .payment-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .payment-controls button,
+  .workspace-footer .btn {
+    width: 100% !important;
+    white-space: normal;
+    text-align: center;
+    word-break: break-word;
+  }
+
+  .verified-success {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .admin-billing-panel {
+    padding: 0.85rem !important;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .admin-billing-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem;
+  }
 }
 
 /* Mobile Screen Specific (<= 480px) */

@@ -2422,7 +2422,7 @@ function App() {
 
           {/* --- ADMIN BILLING SETTINGS SUBTAB --- */}
           {adminSubTab === 'billing' && (
-            <div className="glass-panel" style={{ padding: '2rem' }}>
+            <div className="admin-billing-panel glass-panel">
               <h3 style={{ marginBottom: '1.5rem', color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 700 }}>
                 🧾 {t("Billing & Invoice Settings")}
               </h3>
@@ -2435,7 +2435,7 @@ function App() {
                 <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
                   {t("Shop Details")}
                 </h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div className="admin-billing-grid">
                   <div className="form-group">
                     <label className="form-label">{t("Shop Name")}</label>
                     <input className="form-input" value={billingSettings.shop_name} onChange={e => setBillingSettings(p => ({ ...p, shop_name: e.target.value }))} />
@@ -2454,7 +2454,7 @@ function App() {
                 <h4 style={{ color: 'var(--text-primary)', marginBottom: '1rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
                   {t("Bank Details")}
                 </h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+                <div className="admin-billing-grid">
                   <div className="form-group">
                     <label className="form-label">{t("Bank Name")}</label>
                     <input className="form-input" value={billingSettings.bank_name} onChange={e => setBillingSettings(p => ({ ...p, bank_name: e.target.value }))} />
