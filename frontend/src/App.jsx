@@ -1243,36 +1243,6 @@ function App() {
             </div>
           </section>
 
-          {/* 5. SINGLE Horizontal Filter Chips Row (No Duplicate Filter Rows!) */}
-          <div className="compact-app-filter-chips margin-below-hero">
-            {[
-              { label: 'All', cat: 'All', sub: 'All' },
-              { label: 'Pipes', cat: 'Plumbing', sub: 'Pipes' },
-              { label: 'Fittings', cat: 'Plumbing', sub: 'PVC Fittings' },
-              { label: 'Valves', cat: 'Plumbing', sub: 'Valves' },
-              { label: 'Wires', cat: 'Electrical', sub: 'Wires & Cables' },
-              { label: 'Switches', cat: 'Electrical', sub: 'Switches & Socket' },
-              { label: 'MCB', cat: 'Electrical', sub: 'MCB & Distribution' },
-              { label: 'Sockets', cat: 'Electrical', sub: 'Switches & Socket' },
-              { label: 'Accessories', cat: 'Plumbing', sub: 'Bathroom Accessories' }
-            ].map((chip) => {
-              const isActive = (chip.cat === 'All' && categoryFilter === 'All') ||
-                (categoryFilter === chip.cat && (chip.sub === 'All' || subcategoryFilter === chip.sub));
-              return (
-                <button
-                  key={chip.label}
-                  className={`app-filter-chip ${isActive ? 'active' : ''}`}
-                  onClick={() => {
-                    setCategoryFilter(chip.cat);
-                    setSubcategoryFilter(chip.sub);
-                  }}
-                >
-                  {chip.label}
-                </button>
-              );
-            })}
-          </div>
-
           <div id="catalog-products-list"></div>
 
           {/* Products Catalog Grid */}
