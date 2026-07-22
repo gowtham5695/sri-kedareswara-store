@@ -903,7 +903,7 @@ function App() {
     const filtered = getFilteredItemsForAdmin();
     const groups = {};
     filtered.forEach(item => {
-      const baseName = item.name.replace(/\d+(\/\d+)?\s*(inch|mm|sq\s*mm|”|")?/gi, '').trim();
+      const baseName = item.name.replace(/(?:\d+\/\d+|\d+(?:\.\d+)?\s*(?:inch|mm|sq\s*mm|”|"))/gi, '').trim();
       const groupKey = `${item.category}_${item.subcategory}_${item.item_type}_${baseName}`;
       
       if (!groups[groupKey]) {
@@ -1058,7 +1058,7 @@ function App() {
     filtered.forEach(item => {
       // Group key: Category_Subcategory_Type_Name (we extract base name)
       // e.g. "CPVC Pipe" vs "PVC Elbow"
-      const baseName = item.name.replace(/\d+(\/\d+)?\s*(inch|mm|sq\s*mm|”|")?/gi, '').trim();
+      const baseName = item.name.replace(/(?:\d+\/\d+|\d+(?:\.\d+)?\s*(?:inch|mm|sq\s*mm|”|"))/gi, '').trim();
       const groupKey = `${item.category}_${item.subcategory}_${item.item_type}_${baseName}`;
       
       if (!groups[groupKey]) {

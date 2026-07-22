@@ -4,7 +4,7 @@ const { MongoClient, ObjectId } = require('mongodb');
 
 const getBaseProductName = (fullName) => {
   if (!fullName) return '';
-  return fullName.replace(/\d+(\/\d+)?\s*(inch|mm|sq\s*mm|”|")?/gi, '').trim();
+  return fullName.replace(/(?:\d+\/\d+|\d+(?:\.\d+)?\s*(?:inch|mm|sq\s*mm|”|"))/gi, '').trim();
 };
 
 // Paths for local JSON database
