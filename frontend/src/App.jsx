@@ -426,23 +426,23 @@ function App() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const itemsRes = await fetch(`${API_BASE}/api/items`);
+      const itemsRes = await fetch(`${API_BASE}/api/items?t=${Date.now()}`);
       const itemsData = await itemsRes.json();
       setItems(itemsData);
 
-      const ordersRes = await fetch(`${API_BASE}/api/orders`);
+      const ordersRes = await fetch(`${API_BASE}/api/orders?t=${Date.now()}`);
       const ordersData = await ordersRes.json();
       setOrders(ordersData);
 
       // Load billing settings
-      const settingsRes = await fetch(`${API_BASE}/api/settings`);
+      const settingsRes = await fetch(`${API_BASE}/api/settings?t=${Date.now()}`);
       if (settingsRes.ok) {
         const settingsData = await settingsRes.json();
         setBillingSettings(settingsData);
       }
 
       // Load item requests
-      const reqRes = await fetch(`${API_BASE}/api/item-requests`);
+      const reqRes = await fetch(`${API_BASE}/api/item-requests?t=${Date.now()}`);
       if (reqRes.ok) {
         const reqData = await reqRes.json();
         setItemRequests(reqData);

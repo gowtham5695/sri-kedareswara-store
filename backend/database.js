@@ -56,8 +56,25 @@ async function connectDb() {
         console.log("Connecting to MongoDB Atlas...");
         mongoClient = new MongoClient(mongoUri);
         await mongoClient.connect();
-        db = mongoClient.db(dbName);
-        console.log("Successfully connected to MongoDB:", dbName);
+        
+        // Resolve database name: use MONGO_DB_NAME env var, or parse from MONGO_URI, or default to 'sri_kedareswara_db'
+        if (process.env.MONGO_DB_NAME) {
+          db = mongoClient.db(process.env.MONGO_DB_NAME);
+          console.log("Successfully connected to MongoDB using env DB name:", process.env.MONGO_DB_NAME);
+        } else {
+          // Parse database name from URI, e.g., mongodb+srv://host/dbname?options
+          const urlPattern = /^mongodb(?:\+srv)?:\/\/[^\/]+\/([^?#]+)/;
+          const match = mongoUri.match(urlPattern);
+          const uriDbName = match ? match[1] : null;
+          
+          if (uriDbName) {
+            db = mongoClient.db(uriDbName);
+            console.log(`Successfully connected to MongoDB using URI DB name: "${uriDbName}"`);
+          } else {
+            db = mongoClient.db('sri_kedareswara_db');
+            console.log('Successfully connected to MongoDB using default DB name: "sri_kedareswara_db"');
+          }
+        }
       } else {
         // Ping to verify connection is still alive
         try {
@@ -66,8 +83,16 @@ async function connectDb() {
           console.log("MongoDB connection lost, reconnecting...");
           mongoClient = new MongoClient(mongoUri);
           await mongoClient.connect();
-          db = mongoClient.db(dbName);
-          console.log("Reconnected to MongoDB:", dbName);
+          
+          if (process.env.MONGO_DB_NAME) {
+            db = mongoClient.db(process.env.MONGO_DB_NAME);
+          } else {
+            const urlPattern = /^mongodb(?:\+srv)?:\/\/[^\/]+\/([^?#]+)/;
+            const match = mongoUri.match(urlPattern);
+            const uriDbName = match ? match[1] : null;
+            db = uriDbName ? mongoClient.db(uriDbName) : mongoClient.db('sri_kedareswara_db');
+          }
+          console.log("Reconnected to MongoDB successfully.");
         }
       }
       return { type: 'mongodb', db };
@@ -98,10 +123,20 @@ async function getItems() {
   const conn = await connectDb();
   if (conn.type === 'mongodb') {
     const items = await conn.db.collection('items').find({}).toArray();
-    return items.map(item => ({ ...item, id: item._id.toString() }));
+    return items.map(item => {
+      const computedPrice = calculateSellingPrice(item);
+      return { 
+        ...item, 
+        id: item._id.toString(),
+        selling_price: item.selling_price !== undefined ? item.selling_price : computedPrice
+      };
+    });
   } else {
     const data = readLocalDb();
-    return data.items;
+    return data.items.map(item => ({
+      ...item,
+      selling_price: item.selling_price !== undefined ? item.selling_price : calculateSellingPrice(item)
+    }));
   }
 }
 
@@ -109,10 +144,21 @@ async function getItemById(id) {
   const conn = await connectDb();
   if (conn.type === 'mongodb') {
     const item = await conn.db.collection('items').findOne({ _id: new ObjectId(id) });
-    return item ? { ...item, id: item._id.toString() } : null;
+    if (!item) return null;
+    const computedPrice = calculateSellingPrice(item);
+    return { 
+      ...item, 
+      id: item._id.toString(),
+      selling_price: item.selling_price !== undefined ? item.selling_price : computedPrice
+    };
   } else {
     const data = readLocalDb();
-    return data.items.find(item => item.id === id) || null;
+    const item = data.items.find(item => item.id === id) || null;
+    if (!item) return null;
+    return {
+      ...item,
+      selling_price: item.selling_price !== undefined ? item.selling_price : calculateSellingPrice(item)
+    };
   }
 }
 
